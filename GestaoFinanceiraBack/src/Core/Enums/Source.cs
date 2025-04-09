@@ -26,7 +26,7 @@ namespace Core.Enums
 
         public static Sources ToSource(this string source)
         {
-            return source.Replace(" ", "") switch
+            return source switch
             {
                 "Renda Ativa" => Sources.RendaAtiva,
                 "Renda Passiva" => Sources.RendaPassiva,

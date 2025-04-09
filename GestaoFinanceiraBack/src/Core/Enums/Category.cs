@@ -26,9 +26,9 @@ namespace Core.Enums
             };
         }
 
-        public static Category ToSource(this string category)
+        public static Category ToCategory(this string category)
         {
-            return category.Replace(" ", "") switch
+            return category switch
             {
                 "Despesa Fixa" => Category.DespesaFixa,
                 "Despesa Variável" => Category.DespesaVariavel,

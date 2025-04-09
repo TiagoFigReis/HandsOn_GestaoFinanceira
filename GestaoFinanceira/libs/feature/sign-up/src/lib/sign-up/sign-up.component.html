@@ -1,0 +1,18 @@
+<div class="min-h-screen flex items-center justify-center flex-col gap-10">
+  <lib-card class="w-full">
+    <h1 class="title text-center mb-2">Criar uma conta</h1>
+    <p class="description text-center">
+      Preencha o formulário abaixo para criar uma conta no sistema!
+    </p>
+
+    <lib-user-form
+      [loading]="loading"
+      [showPassword]="true"
+      (userSubmit)="onSubmit($event)"
+    ></lib-user-form>
+  </lib-card>
+
+  <a routerLink="/sign-in" class="description link">
+    Já possui uma conta? Faça login!
+  </a>
+</div>

@@ -1,0 +1,56 @@
+<header
+  class="w-full h-16 flex items-center gap-6 px-4 md:px-10 border-b primary-border secondary-background"
+>
+  <div class="min-w-max">
+    <a routerLink="/app" class="flex items-center gap-2">
+      <img src="/images/logo.svg" alt="logo" class="h-10" />
+      <p class="text font-bold uppercase max-md:hidden">Gestão Agrícola</p>
+    </a>
+  </div>
+
+  <lib-button
+    class="md:hidden"
+    [variant]="'text'"
+    [severity]="'secondary'"
+    [icon]="'pi pi-fw pi-bars'"
+    [link]="true"
+    [size]="'large'"
+    (click)="menuToggle()"
+  ></lib-button>
+
+  <p-menubar [model]="menuItems" class="w-full max-md:hidden">
+    <ng-template #item let-item let-root="root">
+      <a
+        pRipple
+        class="flex items-center gap-2 p-1 px-2"
+        [routerLink]="item.routerLink"
+      >
+        <i [ngClass]="item.icon"></i>
+        <p class="text text-sm">{{ item.label }}</p>
+        <i
+          *ngIf="item.items"
+          [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"
+        ></i>
+      </a>
+    </ng-template>
+  </p-menubar>
+
+  <div class="flex items-center gap-6 ml-auto">
+    <div class="flex items-center justify-center gap-4">
+      <div class="flex flex-col items-end">
+        <p class="text whitespace-nowrap">
+          {{ user?.firstName }} {{ user?.lastName }}
+        </p>
+        <p class="description primary">
+          {{ userRole }}
+        </p>
+      </div>
+
+      <button class="rounded-full" (click)="avatarMenu.toggle($event)">
+        <lib-avatar [icon]="'pi pi-fw pi-user'"></lib-avatar>
+      </button>
+    </div>
+  </div>
+</header>
+
+<lib-menu #avatarMenu [items]="avatarItems" [popup]="true"></lib-menu>

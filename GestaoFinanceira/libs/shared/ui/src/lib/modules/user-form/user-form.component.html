@@ -1,0 +1,91 @@
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  class="w-full flex flex-col gap-2 mt-6"
+>
+  <div class="w-full max-w-md mx-auto flex flex-col gap-2">
+    <lib-input
+      [id]="'firstName'"
+      [label]="'Nome'"
+      [type]="'text'"
+      [placeholder]="'ex. Jhon'"
+      [required]="true"
+      [fluid]="true"
+      [minlength]="3"
+      [maxlength]="50"
+      [control]="firstName"
+      class="w-full"
+    ></lib-input>
+    <lib-input
+      [id]="'lastName'"
+      [label]="'Sobrenome'"
+      [type]="'text'"
+      [placeholder]="'ex. Doe'"
+      [required]="true"
+      [fluid]="true"
+      [minlength]="3"
+      [maxlength]="50"
+      [control]="lastName"
+      class="w-full"
+    ></lib-input>
+
+    <lib-input
+      [id]="'email'"
+      [label]="'Email'"
+      [type]="'email'"
+      [placeholder]="'ex. jhon_doe@gmail.com'"
+      [required]="true"
+      [fluid]="true"
+      [maxlength]="100"
+      [control]="email"
+      class="w-full"
+    ></lib-input>
+
+    <lib-input-mask
+      [id]="'phone'"
+      [label]="'Telefone'"
+      [placeholder]="'ex. (99) 99999-9999'"
+      [required]="true"
+      [fluid]="true"
+      [maxlength]="15"
+      [control]="phone"
+      [mask]="'(99) 99999-9999'"
+      class="w-full"
+    ></lib-input-mask>
+
+    <lib-select
+      [id]="'role'"
+      [label]="'Tipo'"
+      [placeholder]="'Selecione um tipo'"
+      [required]="true"
+      [fluid]="true"
+      [control]="role"
+      [options]="roleOptions"
+      [filter]="true"
+      class="w-full"
+      *ngIf="selectRole"
+    ></lib-select>
+
+    <lib-input-password
+      [id]="'password'"
+      [label]="'Senha'"
+      [required]="true"
+      [fluid]="true"
+      [minlength]="8"
+      [maxlength]="18"
+      [control]="password"
+      [feedback]="true"
+      class="w-full"
+      *ngIf="showPassword"
+    ></lib-input-password>
+  </div>
+
+  <lib-button
+    class="w-full max-w-96 mt-6 mx-auto"
+    [label]="submitLabel"
+    [type]="'submit'"
+    [fluid]="true"
+    [severity]="'primary'"
+    [loading]="loading"
+  ></lib-button>
+</form>

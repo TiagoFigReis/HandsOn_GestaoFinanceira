@@ -1,0 +1,9 @@
+{
+  "production": true,
+  "clientId": "",
+  "redirectUri": "",
+  "jwtToken": "uNNtAoquY3kUMt1BsvLcUqf51rovyv2e",
+  "allowedDomains": ["http://localhost:4200"],
+  "authApiUrl": "http://localhost:5143/api/users",
+  "usersApiUrl": "http://localhost:5143/api/users"
+}

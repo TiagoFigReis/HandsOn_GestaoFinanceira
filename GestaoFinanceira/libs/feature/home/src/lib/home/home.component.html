@@ -1,0 +1,39 @@
+<div class="min-h-screen flex flex-col">
+  <header
+    class="w-full h-20 flex items-center justify-between gap-6 px-10 secondary-background"
+  >
+    <div class="flex items-center gap-3">
+      <img src="/images/logo.svg" alt="logo" class="h-12" />
+      <p class="text font-bold uppercase">Gestão Agrícola</p>
+    </div>
+
+    <div class="flex items-center gap-6">
+      <lib-button
+        [variant]="'text'"
+        [label]="'Criar conta'"
+        [link]="true"
+        [routerLink]="'/sign-up'"
+      ></lib-button>
+      <lib-button [label]="'Entrar'" [routerLink]="'/sign-in'"></lib-button>
+    </div>
+  </header>
+  <main
+    class="flex-1 flex items-center justify-center relative bg-[url(/images/farm.jpg)] bg-cover bg-center"
+  >
+    <div class="absolute inset-0 bg-black opacity-50 z-0"></div>
+
+    <div class="z-10 text-center">
+      <h1 class="title text-5xl text-white">Hands On</h1>
+      <p class="text text-lg text-white mt-2">Plataforma em construção :D</p>
+    </div>
+  </main>
+  <footer
+    class="w-full min-h-28 px-4 py-2 flex items-center justify-center secondary-background"
+  >
+    <div class="max-w-7xl mx-auto">
+      <p class="text text-center">
+        © 2025 Hands On. Todos os direitos reservados.
+      </p>
+    </div>
+  </footer>
+</div>

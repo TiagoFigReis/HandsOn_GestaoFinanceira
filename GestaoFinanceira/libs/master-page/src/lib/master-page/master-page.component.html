@@ -1,0 +1,23 @@
+<ng-container *ngIf="loading; else userLoaded">
+  <div class="w-full h-screen flex items-center justify-center">
+    <lib-spinner />
+  </div>
+</ng-container>
+
+<ng-template #userLoaded>
+  <div class="min-h-screen flex flex-col">
+    <lib-header
+      [menuItems]="menuItems"
+      [(menuVisible)]="menuVisible"
+      class="sticky top-0 z-10"
+    />
+
+    <lib-main class="flex-1 h-full">
+      <router-outlet></router-outlet>
+    </lib-main>
+
+    <lib-footer />
+  </div>
+</ng-template>
+
+<lib-sidebar [menuItems]="menuItems" [(menuVisible)]="menuVisible" />

@@ -1,0 +1,62 @@
+<div
+  class="w-full px-6 py-8 secondary-background rounded-md border primary-border"
+>
+  <h1 class="subtitle mb-1">Informações da conta</h1>
+  <p class="description">
+    Atualize as informações da sua conta para manter seus dados atualizados.
+  </p>
+
+  <div class="w-full mt-10">
+    <form
+      [formGroup]="accountForm"
+      (ngSubmit)="onSubmit()"
+      class="w-full max-w-2xl flex flex-col items-end gap-2"
+    >
+      <div class="w-full flex flex-col gap-2">
+        <lib-input
+          [id]="'firstName'"
+          [label]="'Nome'"
+          [type]="'text'"
+          [placeholder]="'ex. Jhon'"
+          [required]="true"
+          [fluid]="true"
+          [maxlength]="50"
+          [control]="firstName"
+          class="w-full"
+        ></lib-input>
+        <lib-input
+          [id]="'lastName'"
+          [label]="'Sobrenome'"
+          [type]="'text'"
+          [placeholder]="'ex. Doe'"
+          [required]="true"
+          [fluid]="true"
+          [maxlength]="50"
+          [control]="lastName"
+          class="w-full"
+        ></lib-input>
+
+        <lib-input-mask
+          [id]="'phone'"
+          [label]="'Telefone'"
+          [placeholder]="'ex. (99) 99999-9999'"
+          [required]="true"
+          [fluid]="true"
+          [maxlength]="15"
+          [control]="phone"
+          [mask]="'(99) 99999-9999'"
+          class="w-full"
+        ></lib-input-mask>
+      </div>
+
+      <lib-button
+        class="w-full max-w-72 mt-6"
+        [label]="'Salvar'"
+        [type]="'submit'"
+        [fluid]="true"
+        [severity]="'primary'"
+        [loading]="loading"
+      ></lib-button>
+    </form>
+  </div>
+</div>

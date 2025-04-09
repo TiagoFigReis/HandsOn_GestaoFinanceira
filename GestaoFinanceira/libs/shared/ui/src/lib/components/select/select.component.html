@@ -1,0 +1,80 @@
+<ng-container *ngIf="floatLabel; else noFloatLabel">
+  <p-floatlabel [variant]="floatLabelType">
+    <ng-container *ngTemplateOutlet="inputContent"></ng-container>
+  </p-floatlabel>
+</ng-container>
+
+<ng-template #noFloatLabel>
+  <ng-container *ngTemplateOutlet="inputContent"></ng-container>
+</ng-template>
+
+<ng-template #inputContent>
+  <div class="w-full flex flex-col gap-2">
+    <label
+      [for]="id"
+      [ngClass]="{
+        error: error || hasError
+      }"
+      *ngIf="label && label.length > 0"
+    >
+      {{ label }}
+    </label>
+    <p-select
+      pInputText
+      [id]="id"
+      [name]="name"
+      [formControl]="control"
+      [options]="options"
+      [placeholder]="!floatLabel ? placeholder : ''"
+      [required]="required"
+      [readonly]="readonly || loading"
+      [variant]="variant"
+      [fluid]="fluid"
+      [size]="size"
+      [loading]="loading"
+      [filter]="filter"
+      [filterBy]="filterBy"
+      [filterPlaceholder]="filterPlaceholder"
+      [filterMatchMode]="filterMatchMode"
+      [showClear]="showClear"
+      [ngClass]="{
+        error: error || hasError,
+        'error-border': error || hasError
+      }"
+      optionLabel="label"
+      class="w-full"
+    >
+      <ng-template #selectedItem let-selectedOption>
+        <div class="flex items-center gap-2">
+          <img
+            *ngIf="selectedOption.image"
+            [src]="selectedOption.image"
+            [alt]="selectedOption.label"
+            style="width: 18px"
+          />
+          <div>{{ selectedOption.label }}</div>
+        </div>
+      </ng-template>
+      <ng-template let-item #item>
+        <div class="flex items-center gap-2">
+          <img
+            *ngIf="item.image"
+            [src]="item.image"
+            [alt]="item.label"
+            style="width: 18px"
+          />
+          <div>{{ item.label }}</div>
+        </div>
+      </ng-template>
+    </p-select>
+    <small
+      class="small-text"
+      *ngIf="error || hint || hasError"
+      [ngClass]="{
+        error: error || control.invalid
+      }"
+    >
+      {{ error || hint || errorMessage }}
+    </small>
+  </div>
+</ng-template>

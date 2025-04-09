@@ -1,0 +1,28 @@
+<div class="flex items-center justify-start gap-2">
+  <p-checkbox
+    class="flex items-center justify-center"
+    [inputId]="id"
+    [name]="name"
+    [value]="value"
+    [binary]="binary"
+    [formControl]="control"
+    [required]="required"
+    [readonly]="readonly"
+    [autofocus]="autofocus"
+    [variant]="variant"
+    [size]="size"
+    [checkboxIcon]="checkboxIcon"
+    [ngClass]="{
+      'error-border': error || hasError
+    }"
+  />
+  <label
+    [for]="id"
+    class="description"
+    [ngClass]="{
+      error: error || control.invalid
+    }"
+  >
+    {{ label }}
+  </label>
+</div>

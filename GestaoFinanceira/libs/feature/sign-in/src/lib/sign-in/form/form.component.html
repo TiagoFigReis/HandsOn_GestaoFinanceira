@@ -1,0 +1,76 @@
+<div class="w-full h-full">
+  <h2 class="title text-center mb-2">Entrar</h2>
+  <p class="description text-center">
+    Use seu endereço de e-mail e senha para acessar sua conta.
+  </p>
+
+  <div class="w-full max-w-96 mx-auto flex flex-col gap-6 mt-8">
+    <form
+      [formGroup]="signInForm"
+      (ngSubmit)="onSubmit()"
+      class="w-full flex flex-col gap-2"
+    >
+      <lib-form-group [style]="'col'">
+        <lib-input
+          [id]="'email'"
+          [label]="'Email'"
+          [type]="'email'"
+          [placeholder]="'ex. jhon_doe@gmail.com'"
+          [required]="true"
+          [fluid]="true"
+          [maxlength]="100"
+          [control]="email"
+        ></lib-input>
+        <lib-input-password
+          [id]="'password'"
+          [label]="'Senha'"
+          [required]="true"
+          [fluid]="true"
+          [maxlength]="18"
+          [control]="password"
+          [feedback]="false"
+        ></lib-input-password>
+      </lib-form-group>
+
+      <div class="w-full flex items-center justify-between mt-1">
+        <lib-checkbox
+          [id]="'rememberMe'"
+          [name]="'rememberMe'"
+          [label]="'Lembrar e-mail'"
+          [control]="rememberMe"
+        ></lib-checkbox>
+
+        <a routerLink="/sign-in/forgot-password">
+          <p class="description link text-right">Esqueceu sua senha?</p>
+        </a>
+      </div>
+
+      <lib-button
+        class="mt-6"
+        [label]="'Entrar'"
+        [type]="'submit'"
+        [fluid]="true"
+        [severity]="'primary'"
+        [loading]="loading"
+      ></lib-button>
+    </form>
+
+    <p class="description text-center">ou</p>
+
+    <lib-button
+      [label]="'Entrar com o Google'"
+      [fluid]="true"
+      [severity]="'contrast'"
+      [icon]="'pi pi-google'"
+      [loading]="loadingGoogle"
+      (click)="onGoogleSignIn()"
+    ></lib-button>
+  </div>
+
+  <div class="mt-8">
+    <p class="text-center text-sm text-gray-500">
+      Ainda não possui uma conta?
+      <a class="link" [routerLink]="['/sign-up']">Crie uma conta!</a>
+    </p>
+  </div>
+</div>

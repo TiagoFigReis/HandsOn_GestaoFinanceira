@@ -1,0 +1,33 @@
+<p-drawer
+  [visible]="menuVisible"
+  (visibleChange)="menuToggle($event)"
+  [styleClass]="'primary-background primary-border'"
+  [ariaCloseLabel]="'Fechar menu'"
+  [baseZIndex]="1000"
+  [position]="'left'"
+  [closable]="false"
+>
+  <ng-template #header>
+    <div class="w-full flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <img src="/images/logo.svg" alt="logo" class="h-12" />
+        <p class="text font-bold uppercase">Gestão Agrícola</p>
+      </div>
+    </div>
+
+    <lib-button
+      [variant]="'text'"
+      [severity]="'secondary'"
+      [icon]="'pi pi-fw pi-times'"
+      [tooltip]="'Fechar menu'"
+      [size]="'large'"
+      (click)="menuToggle(false)"
+    ></lib-button>
+  </ng-template>
+
+  <ng-template #content>
+    <div class="w-full mt-4">
+      <p-menu [model]="menuItems" [styleClass]="'bg-transparent border-none'" />
+    </div>
+  </ng-template>
+</p-drawer>

@@ -1,0 +1,50 @@
+<div class="w-full">
+  <p class="text font-medium mb-1">Alterar email</p>
+  <p class="description">
+    Use o formulário abaixo para alterar o email da sua conta.
+  </p>
+
+  <form
+    [formGroup]="emailChangeForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full flex flex-col items-end gap-2 mt-6"
+  >
+    <lib-form-group
+      [style]="'row'"
+      [responsive]="true"
+      class="w-full flex flex-col gap-2"
+    >
+      <lib-input
+        [id]="'email'"
+        [label]="'Email'"
+        [type]="'email'"
+        [placeholder]="'ex. jhon_doe@gmail.com'"
+        [required]="true"
+        [fluid]="true"
+        [maxlength]="100"
+        [control]="email"
+        class="w-full"
+      ></lib-input>
+      <lib-input
+        [id]="'emailConfirmation'"
+        [label]="'Confirme o email'"
+        [type]="'email'"
+        [placeholder]="'ex. jhon_doe@gmail.com'"
+        [required]="true"
+        [fluid]="true"
+        [maxlength]="100"
+        [control]="emailConfirmation"
+        class="w-full"
+      ></lib-input>
+    </lib-form-group>
+
+    <lib-button
+      class="w-full max-w-72 mt-6"
+      [label]="'Alterar email'"
+      [type]="'submit'"
+      [fluid]="true"
+      [severity]="'primary'"
+      [loading]="loading"
+    ></lib-button>
+  </form>
+</div>

@@ -1,0 +1,66 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@farm/account": [
+        "libs/feature/settings/src/lib/settings/account/src/index.ts"
+      ],
+      "@farm/change-password": ["libs/feature/change-password/src/index.ts"],
+      "@farm/core": ["libs/shared/core/src/index.ts"],
+      "@farm/dashboard": ["libs/feature/dashboard/src/index.ts"],
+      "@farm/despesas": [
+        "libs/feature/financas/src/lib/financas/despesas/src/index.ts"
+      ],
+      "@farm/environments": ["src/app/environments/app-config.token.ts"],
+      "@farm/financas": ["libs/feature/financas/src/index.ts"],
+      "@farm/footer": [
+        "libs/master-page/src/lib/master-page/footer/src/index.ts"
+      ],
+      "@farm/header": [
+        "libs/master-page/src/lib/master-page/header/src/index.ts"
+      ],
+      "@farm/home": ["libs/feature/home/src/index.ts"],
+      "@farm/list-despesas": [
+        "libs/feature/financas/src/lib/financas/list-despesas/src/index.ts"
+      ],
+      "@farm/list-receitas": [
+        "libs/feature/financas/src/lib/financas/list-receitas/src/index.ts"
+      ],
+      "@farm/main": ["libs/master-page/src/lib/master-page/main/src/index.ts"],
+      "@farm/master-page": ["libs/master-page/src/index.ts"],
+      "@farm/not-found": ["libs/feature/not-found/src/index.ts"],
+      "@farm/receitas": [
+        "libs/feature/financas/src/lib/financas/receitas/src/index.ts"
+      ],
+      "@farm/security": [
+        "libs/feature/settings/src/lib/settings/security/src/index.ts"
+      ],
+      "@farm/settings": ["libs/feature/settings/src/index.ts"],
+      "@farm/sidebar": [
+        "libs/master-page/src/lib/master-page/sidebar/src/index.ts"
+      ],
+      "@farm/sign-in": ["libs/feature/sign-in/src/index.ts"],
+      "@farm/sign-up": ["libs/feature/sign-up/src/index.ts"],
+      "@farm/ui": ["libs/shared/ui/src/index.ts"],
+      "@farm/user": ["libs/feature/users/src/lib/users/user/src/index.ts"],
+      "@farm/users": ["libs/feature/users/src/index.ts"],
+      "@farm/users-list": [
+        "libs/feature/users/src/lib/users/users-list/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

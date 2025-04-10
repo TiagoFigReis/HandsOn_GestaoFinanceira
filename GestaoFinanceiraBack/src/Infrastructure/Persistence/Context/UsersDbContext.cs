@@ -6,9 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Context
 {
-    public class UsersDbContext(DbContextOptions<UsersDbContext> options) : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options), IUsersDbContext
+    public class UsersDbContext(DbContextOptions<UsersDbContext> options) : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options), IUsersDbContext, IReceitaDbContext, IDespesaDbContext
     {
         public DbSet<User> IdentityUsers { get; set; }
+
+        public DbSet<Receitas> Receitas { get; set; }
+        public DbSet<Despesas> Despesas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -68,6 +71,35 @@ namespace Infrastructure.Persistence.Context
                     RoleId = roleIds[i]
                 });
             }
+
+            modelBuilder.Entity<Receitas>(entity => { 
+
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Fonte).IsRequired().HasMaxLength(50);
+
+                entity.Property(e => e.Valor).IsRequired();
+
+                entity.Property(e => e.Descricao).HasMaxLength(100);
+
+                entity.Property(e => e.Data).IsRequired();
+
+            });
+            
+            modelBuilder.Entity<Despesas>(entity => { 
+
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Categoria).IsRequired().HasMaxLength(50);
+
+                entity.Property(e => e.Valor).IsRequired();
+
+                entity.Property(e => e.Descricao).HasMaxLength(100);
+
+                entity.Property(e => e.Data).IsRequired();
+
+            }
+            );
         }
     }
 }

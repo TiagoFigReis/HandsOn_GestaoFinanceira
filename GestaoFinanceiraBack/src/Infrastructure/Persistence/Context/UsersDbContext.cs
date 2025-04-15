@@ -9,7 +9,6 @@ namespace Infrastructure.Persistence.Context
     public class UsersDbContext(DbContextOptions<UsersDbContext> options) : IdentityDbContext<User, IdentityRole<Guid>, Guid>(options), IUsersDbContext, IReceitaDbContext, IDespesaDbContext
     {
         public DbSet<User> IdentityUsers { get; set; }
-
         public DbSet<Receitas> Receitas { get; set; }
         public DbSet<Despesas> Despesas { get; set; }
 

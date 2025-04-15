@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using API.Filters;
 using Application;
 using Infrastructure;
+using Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,10 +82,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+
     app.MapOpenApi();
+    
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/openapi/v1.json", "HandsOn API v1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "HandsOn API v1");
         options.RoutePrefix = string.Empty;
         options.DocumentTitle = "HandsOn API Documentation";
         options.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
@@ -100,7 +104,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

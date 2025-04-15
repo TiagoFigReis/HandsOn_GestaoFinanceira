@@ -10,10 +10,10 @@ namespace Core.Repositories
 
         Task<IEnumerable<Receitas>?> GetAllAsync(Guid UserId);
         
-        Task<Receitas> AddAsync(Receitas receita);
+        Task<Receitas> Add(Receitas receita);
 
-        Task<Receitas> UpdateAsync(Receitas receita);
+        Task<Receitas> Update(Receitas receita);
 
-        Task<Receitas> DeleteAsync(Receitas receita);
+        Task<Receitas> Delete(Receitas receita);
     }
 }

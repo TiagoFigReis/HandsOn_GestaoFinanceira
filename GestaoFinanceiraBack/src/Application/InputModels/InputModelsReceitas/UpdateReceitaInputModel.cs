@@ -16,7 +16,7 @@ namespace Application.InputModels.InputModelsReceitas
         public DateTime? Data { get; set; }
 
         [MaxLength(50, ErrorMessage = "Descrição não pode exceder 50 caracteres")]
-        public string? Descricao { get; set; }
+        public string? Descricao { get; set; } = string.Empty;
 
         public class DataValida : ValidationAttribute
         {

@@ -10,10 +10,10 @@ namespace Core.Repositories
 
         Task<IEnumerable<Despesas>?> GetAllAsync(Guid UserId);
         
-        Task<Despesas> AddAsync(Despesas despesa);
+        Task<Despesas> Add(Despesas despesa);
 
-        Task<Despesas> UpdateAsync(Despesas despesa);
+        Task<Despesas> Update(Despesas despesa);
 
-        Task<Despesas> DeleteAsync(Despesas despesa);
+        Task<Despesas> Delete(Despesas despesa);
     }
 }

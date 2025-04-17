@@ -12,4 +12,6 @@ export interface Environment {
   // API URLs
   authApiUrl: string;
   usersApiUrl: string;
+  receitaApiUrl: string;
+  despesaApiUrl: string;
 }

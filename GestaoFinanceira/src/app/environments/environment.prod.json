@@ -5,5 +5,7 @@
   "jwtToken": "uNNtAoquY3kUMt1BsvLcUqf51rovyv2e",
   "allowedDomains": ["http://localhost:4200"],
   "authApiUrl": "http://localhost:5143/api/users",
-  "usersApiUrl": "http://localhost:5143/api/users"
+  "usersApiUrl": "http://localhost:5143/api/users",
+  "receitaApiUrl": "http://localhost:5143/api/receita",
+  "despesaApiUrl": "http://localhost:5143/api/despesa"
 }

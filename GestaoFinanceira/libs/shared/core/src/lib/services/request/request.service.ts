@@ -15,6 +15,8 @@ export class RequestService {
 
   authApiUrl = '';
   usersApiUrl = '';
+  receitaApiUrl = '';
+  despesaApiUrl = '';
 
   public constructor(
     public httpClient: HttpClient,
@@ -23,6 +25,8 @@ export class RequestService {
   ) {
     this.authApiUrl = this.appConfig.authApiUrl;
     this.usersApiUrl = this.appConfig.usersApiUrl;
+    this.receitaApiUrl = this.appConfig.receitaApiUrl;
+    this.despesaApiUrl = this.appConfig.despesaApiUrl;
   }
 
   public httpOptions: {

@@ -62,6 +62,8 @@ function environmentFactory(): Environment {
     allowedDomains: [],
     authApiUrl: '',
     usersApiUrl: '',
+    receitaApiUrl: '',
+    despesaApiUrl: '',
     clientId: '',
     redirectUri: '',
   };

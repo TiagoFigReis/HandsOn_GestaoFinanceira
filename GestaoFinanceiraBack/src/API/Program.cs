@@ -3,7 +3,6 @@ using Microsoft.OpenApi.Models;
 using API.Filters;
 using Application;
 using Infrastructure;
-using Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -103,6 +102,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthentication();
 

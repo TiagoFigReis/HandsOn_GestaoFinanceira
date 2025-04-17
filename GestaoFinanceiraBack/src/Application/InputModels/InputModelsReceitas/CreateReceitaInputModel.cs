@@ -11,9 +11,7 @@ namespace Application.InputModels.InputModelsReceitas
         public decimal Valor { get; set; }
 
         [Required(ErrorMessage = "É necessario uma fonte de renda")]
-        [MaxLength(50, ErrorMessage = "Fonte de renda não pode exceder 50 caracteres")]
-        [MinLength(1, ErrorMessage = "Fonte de renda deve ter pelo menos 1 caracter")]
-        public string Fonte { get; set; } = string.Empty;
+        public Sources Fonte { get; set; }
 
         [Required(ErrorMessage = "É necessário uma data")]
         [DataValida(ErrorMessage = "A data fornecida deve ser menor que e atual")]

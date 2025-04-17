@@ -8,10 +8,10 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:9.0-windowsservercore-ltsc2022 AS build
 WORKDIR /src
 
-COPY ["HandsOn-Back/src/API/", "API/"]
-COPY ["HandsOn-Back/src/Application/", "Application/"]
-COPY ["HandsOn-Back/src/Core/", "Core/"]
-COPY ["HandsOn-Back/src/Infrastructure/", "Infrastructure/"]
+COPY ["GestaoFinanceiraBack/src/API/", "API/"]
+COPY ["GestaoFinanceiraBack/src/Application/", "Application/"]
+COPY ["GestaoFinanceiraBack/src/Core/", "Core/"]
+COPY ["GestaoFinanceiraBack/src/Infrastructure/", "Infrastructure/"]
 
 RUN dotnet restore "API/API.csproj"
 

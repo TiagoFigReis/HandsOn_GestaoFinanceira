@@ -21,8 +21,7 @@ namespace Core.Enums
                 Category.DespesaOcasional => "Despesa Ocasional",
                 Category.DespesaEmergencial => "Despesa Emergencial",
                 Category.DespesaFinanceira => "Despesa Financeira",
-                Category.Outros => "Outros",
-                _ => "Unknown",
+                _ => "Outros",
             };
         }
 
@@ -35,7 +34,6 @@ namespace Core.Enums
                 "Despesa Ocasional" => Category.DespesaOcasional,
                 "Despesa Emergencial" => Category.DespesaEmergencial,
                 "Despesa Financeira" => Category.DespesaFinanceira,
-                "Outros" => Category.Outros,
                 _ => Category.Outros,
             };
         }

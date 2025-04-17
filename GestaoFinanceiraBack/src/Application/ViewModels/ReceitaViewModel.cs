@@ -6,7 +6,7 @@ namespace Application.ViewModels
     public class ReceitaViewModel
     {
         public Guid Id {get; set;}
-        public string? Fonte { get; set; }
+        public Sources Fonte { get; set; }
         public decimal Valor { get; set; }
         public string? Descricao {get; set;}
         public DateTime Data {get; set;}
@@ -19,7 +19,7 @@ namespace Application.ViewModels
             return new ReceitaViewModel
             {
                 Id = receita.Id,
-                Fonte = SourceExtension.ToFriendlyString(receita.Fonte),
+                Fonte = receita.Fonte,
                 Valor = receita.Valor,
                 Descricao = receita.Descricao,
                 Data = receita.Data,

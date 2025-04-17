@@ -14,7 +14,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'lib-input',
+  selector: 'lib-input-number',
   imports: [
     CommonModule,
     FormsModule,
@@ -24,23 +24,23 @@ import { InputTextModule } from 'primeng/inputtext';
     InputIconModule,
     InputTextModule,
   ],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.css',
+  templateUrl: './input-number.component.html',
+  styleUrl: './input-number.component.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputComponent),
+      useExisting: forwardRef(() => InputNumberComponent),
       multi: true,
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputNumberComponent implements ControlValueAccessor {
   @Input() id = '';
   @Input() name = '';
   @Input() label = '';
   @Input() floatLabel = false;
   @Input() floatLabelType: 'in' | 'over' | 'on' = 'in';
-  @Input() type: 'text' | 'email' | 'search'| 'date' | 'number' = 'text';
+  @Input() type = 'number';
   @Input() control: FormControl = new FormControl();
   @Input() placeholder = '';
   @Input() disabled = false;
@@ -56,8 +56,6 @@ export class InputComponent implements ControlValueAccessor {
   @Input() size: 'small' | 'large' = 'small';
   @Input() icon = '';
   @Input() iconPosition: 'left' | 'right' = 'left';
-  @Input() minlength = 0;
-  @Input() maxlength = 0;
   @Input() min = 0;
   @Input() max = 0;
   @Input() loading = false;
@@ -106,14 +104,12 @@ export class InputComponent implements ControlValueAccessor {
         this.hintName || this.label,
       );
 
-      if (this.type !== 'date' && this.type !== 'number') {
-        if (error === 'minlength' || error === 'maxlength') {
+        if (error === 'min' || error === 'max') {
           message = message
-            .replace('{min}', this.minlength.toString())
-            .replace('{max}', this.maxlength.toString());
+            .replace('{min}', this.min.toString())
+            .replace('{max}', this.max.toString());
         }
-      }
-
+      
       return message;
     }
 
@@ -123,11 +119,7 @@ export class InputComponent implements ControlValueAccessor {
 
 const errorMessages = {
   required: '{0} é obrigatório',
-  email: 'E-mail inválido',
-  emailExists: 'E-mail já cadastrado',
-  emailsMatch: 'E-mails não coincidem',
   number: 'Número inválido',
-  minlength: '{0} deve ter no mínimo {min} caracteres',
-  maxlength: '{0} deve ter no máximo {max} caracteres',
-  phoneExists: 'Telefone já cadastrado',
+  min: '{0} deve ser no mínimo {min}',
+  max: '{0} deve ser no máximo {max}',
 };

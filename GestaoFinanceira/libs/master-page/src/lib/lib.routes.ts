@@ -23,7 +23,6 @@ export const masterPageRoutes: Route[] = [
       {
         path: 'financas',
         loadChildren: () => import('@farm/financas').then((m) => m.FinancasRoutes),
-        canActivate: [IsAdminGuard],
       },
       {
         path: 'settings',

@@ -19,8 +19,7 @@ namespace Core.Enums
                 Sources.RendaPassiva => "Renda Passiva",
                 Sources.RendaVariavel => "Renda Variável",
                 Sources.RendaExtra => "Renda Extra",
-                Sources.Outros => "Outros",
-                _ => "Unknown",
+                _ => "Outros",
             };
         }
 
@@ -32,7 +31,6 @@ namespace Core.Enums
                 "Renda Passiva" => Sources.RendaPassiva,
                 "Renda Variável" => Sources.RendaVariavel,
                 "Renda Extra" => Sources.RendaExtra,
-                "Outros" => Sources.Outros,
                 _ => Sources.Outros,
             };
         }

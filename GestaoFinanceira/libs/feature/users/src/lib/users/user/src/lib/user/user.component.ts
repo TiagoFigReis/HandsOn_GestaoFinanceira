@@ -29,6 +29,8 @@ export class UserComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || undefined;
 
+    this.facade.load(this.id);
+
     if (!this.id) {
       this.selectRole = true;
       return;
@@ -37,8 +39,6 @@ export class UserComponent implements OnInit, OnDestroy {
     this.title = 'Editar Usuário';
     this.description = 'Preencha os campos abaixo para editar o usuário';
     this.submitLabel = 'Editar';
-
-    this.facade.load(this.id);
 
     this.facade.user$.subscribe((user) => {
       if (!user) return;

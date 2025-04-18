@@ -47,5 +47,3 @@ export * from './lib/utils/form-validators';
 // enums
 export * from './lib/enums/user-roles.enum';
 export * from './lib/enums/user-status.enum';
-export * from './lib/enums/despesa-category.enum';
-export * from './lib/enums/receita-source.enum';

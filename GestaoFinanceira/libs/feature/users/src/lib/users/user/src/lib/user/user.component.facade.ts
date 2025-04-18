@@ -30,7 +30,13 @@ export class UserComponentFacade {
     private router: Router,
   ) {}
 
-  load(id: string) {
+  load(id: string | undefined) {
+
+    if(!id){
+      this.id = id
+      return
+    }
+
     const data = this.authenticationService.decodedToken;
 
     this.id = id;

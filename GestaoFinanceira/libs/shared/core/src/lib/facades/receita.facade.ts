@@ -29,7 +29,7 @@ export class ReceitaFacade {
           error: () => {
             this.notificationService.error(
               'Erro!',
-              'Não foi possível carregar os usuários!',
+              'Não foi possível carregar as receitas!',
             );
           },
         }),
@@ -42,7 +42,7 @@ export class ReceitaFacade {
           error: () => {
             this.notificationService.error(
               'Erro!',
-              'Não foi possível carregar o usuário!',
+              'Não foi possível carregar a receita!',
             );
           },
         }),
@@ -74,13 +74,13 @@ export class ReceitaFacade {
           next: () => {
             this.notificationService.success(
               'Sucesso!',
-              'Usuário atualizado com sucesso!',
+              'Receita atualizada com sucesso!',
             );
           },
           error: () => {
             this.notificationService.error(
               'Erro!',
-              'Não foi possível atualizar o usuário!',
+              'Não foi possível atualizar a receita!',
             );
           },
         }),
@@ -93,13 +93,13 @@ export class ReceitaFacade {
           next: () => {
             this.notificationService.success(
               'Sucesso!',
-              'Usuário excluído com sucesso!',
+              'Receita excluída com sucesso!',
             );
           },
           error: () => {
             this.notificationService.error(
               'Erro!',
-              'Não foi possível excluir o usuário!',
+              'Não foi possível excluir a receita!',
             );
           },
         }),

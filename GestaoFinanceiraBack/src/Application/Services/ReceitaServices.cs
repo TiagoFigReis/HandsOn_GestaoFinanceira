@@ -35,7 +35,7 @@ namespace Application.Services
             InputModelValidator.Validate(inputModel);
 
             var receita = new Receitas {
-                Fonte = inputModel.Fonte,
+                Fonte = SourceExtension.ToSource(inputModel.Fonte),
                 Valor = inputModel.Valor,
                 Descricao = inputModel.Descricao,
                 Data = inputModel.Data,

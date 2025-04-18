@@ -10,7 +10,7 @@ namespace Application.InputModels.InputModelsReceitas
         public decimal? Valor { get; set; }
 
         [MaxLength(50, ErrorMessage = "Fonte de renda não pode exceder 50 caracteres")]
-        public string? Fonte { get; set; }
+        public string Fonte { get; set; } = string.Empty;
 
         [DataValida(ErrorMessage = "A data fornecida deve ser menor que e atual")]
         public DateTime? Data { get; set; }

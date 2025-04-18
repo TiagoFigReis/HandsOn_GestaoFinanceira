@@ -25,7 +25,12 @@ export class ReceitasComponentFacade {
       private router: Router,
     ) {}
 
-    load(id: string) {
+    load(id: string | undefined) {
+        if(!id){
+          this.id = id;
+          return
+        }
+
         this.id = id;
     
         this.loadingSubject.next(true);

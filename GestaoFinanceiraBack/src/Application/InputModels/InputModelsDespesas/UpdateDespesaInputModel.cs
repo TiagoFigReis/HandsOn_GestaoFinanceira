@@ -10,7 +10,7 @@ namespace Application.InputModels.InputModelsDespesas
         public decimal? Valor { get; set; }
 
         [MaxLength(50, ErrorMessage = "Categoria de despesa não pode exceder 50 caracteres")]
-        public string? Categoria { get; set; }
+        public string Categoria { get; set; } = string.Empty;
 
         [DataValida(ErrorMessage = "A data fornecida deve ser menor que e atual")]
         public DateTime? Data { get; set; }

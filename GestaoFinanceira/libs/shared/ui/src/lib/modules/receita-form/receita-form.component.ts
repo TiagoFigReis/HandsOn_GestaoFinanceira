@@ -21,7 +21,6 @@ import {
 } from '../../components/select/select.component';
 import {
   Receita,
-  Sources,
 } from '@farm/core';
 import { InputNumberComponent } from '../../components/input-number/input-number.component';
 
@@ -115,14 +114,14 @@ export class ReceitaFormComponent implements OnChanges {
     let fonte = null;
     
     if (this.receita.fonte !== undefined) {
-      const fonteName = Sources[this.receita.fonte as keyof typeof Sources];
+      const fonteName = this.receita.fonte;
       fonte = this.sourceOptions.find((option) => option.label === fonteName);
     }
     
     this.receitaForm.patchValue({
       valor: this.receita.valor,
       descricao: this.receita.descricao,
-      data: this.receita.data,
+      data: this.receita.data.split('T')[0],
       fonte: fonte,
     });
   }
@@ -132,23 +131,16 @@ export class ReceitaFormComponent implements OnChanges {
         return this.receitaForm.markAllAsTouched();
       }
 
-      const date = new Date(this.data.value)
-
-      date.setHours(new Date().getHours() - 3)
-      date.setMinutes(new Date().getMinutes());
-      date.setSeconds(new Date().getSeconds());
-      date.setMilliseconds(new Date().getMilliseconds());
-
       const receita: Receita = {
         id: this.receita?.id,
         valor: this.valor.value,
         descricao: this.descricao.value,
-        data: date.toISOString()
+        data: this.data.value
       };
   
       const fonte = this.fonte.value;
   
-      if (fonte && fonte.value) receita.fonte = parseInt(fonte.value);
+      if (fonte && fonte.label) receita.fonte = fonte.label
   
       this.receitaSubmit.emit(receita);
     }

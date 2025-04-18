@@ -35,7 +35,7 @@ export class ReceitaService extends RequestService {
   update(receita: Receita) {
       return this.httpClient
         .put<Receita>(
-          `${this.usersApiUrl}/${receita.id}`,
+          `${this.receitaApiUrl}/${receita.id}`,
           JSON.stringify(receita),
           this.httpOptions,
         )

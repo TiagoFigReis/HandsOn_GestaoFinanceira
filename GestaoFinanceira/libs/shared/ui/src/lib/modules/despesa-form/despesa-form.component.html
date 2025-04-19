@@ -1,1 +1,66 @@
-<p>despesa-form works!</p>
+<form
+  [formGroup]="despesaForm"
+  (ngSubmit)="onSubmit()"
+  class="w-full flex flex-col gap-2 mt-6"
+>
+  <div class="w-full max-w-md mx-auto flex flex-col gap-2">
+    <lib-input-number
+      id="valor"
+      label="Valor"
+      type="number"
+      placeholder="ex. 5000"
+      [required]="true"
+      [fluid]="true"
+      [min]="0.01"
+      [max]="maxValue"
+      [control]="valor"
+      class="w-full"
+    ></lib-input-number>
+
+    <lib-input
+      id="descricao"
+      label="Descrição"
+      type="text"
+      placeholder="ex. Investimento"
+      [required]="true"
+      [fluid]="true"
+      [minlength]="1"
+      [maxlength]="50"
+      [control]="descricao"
+      class="w-full"
+    ></lib-input>
+
+    <lib-input
+      id="data"
+      label="Data"
+      type="date"
+      [minlength]="1"
+      [maxlength]="50"
+      [required]="true"
+      [fluid]="true"
+      [control]="data"
+      class="w-full"
+    ></lib-input>
+
+    <lib-select
+      id="categoria"
+      label="Categoria"
+      placeholder="Selecione uma categoria de despesa"
+      [required]="true"
+      [fluid]="true"
+      [control]="categoria"
+      [options]="sourceOptions"
+      [filter]="true"
+      class="w-full"
+    ></lib-select>
+  </div>
+
+  <lib-button
+    class="w-full max-w-96 mt-6 mx-auto"
+    [label]="submitLabel"
+    type="submit"
+    [fluid]="true"
+    severity="primary"
+    [loading]="loading"
+  ></lib-button>
+</form>

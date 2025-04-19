@@ -50,7 +50,7 @@ const columns: Column[] = [
   {
     field: 'valor',
     header: 'Valor',
-    type: 'text',
+    type: 'currency',
     sortable: true,
     filterable: true,
     visible: true,

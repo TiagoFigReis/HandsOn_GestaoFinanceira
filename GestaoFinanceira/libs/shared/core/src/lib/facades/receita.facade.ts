@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from '../models/user.model';
-import { AuthenticationService } from '../services/authentication/authentication.service';
 import { ReceitaService } from '../services/receita/receita.service';
 import { NotificationService } from '../services/notification/notification.service';
 import { Receita } from '../models/receita.model';
@@ -11,14 +9,13 @@ import { Receita } from '../models/receita.model';
   providedIn: 'root',
 })
 export class ReceitaFacade {
-    private userSubject = new BehaviorSubject<User | null>(null);
+    private receitaSubject = new BehaviorSubject<Receita | null>(null);
     private loadingSubject = new BehaviorSubject<boolean>(true);
   
-    user$: Observable<User | null> = this.userSubject.asObservable();
+    receita$: Observable<Receita | null> = this.receitaSubject.asObservable();
     loading$: Observable<boolean> = this.loadingSubject.asObservable();
   
     constructor(
-      private authenticationService: AuthenticationService,
       private receitaService: ReceitaService,
       private notificationService: NotificationService,
     ) {}

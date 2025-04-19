@@ -18,4 +18,4 @@ export * from './lib/components/toast/toast.component';
 // Modules
 export * from './lib/modules/user-form/user-form.component';
 export * from './lib/modules/receita-form/receita-form.component';
-//export * from './lib/modules/despesa-form/despesa-form.component';
+export * from './lib/modules/despesa-form/despesa-form.component';

@@ -1,3 +1,14 @@
-<div class="flex justify-center">
-    <lib-button [label]="'Adicionar Despesas'" [routerLink]="'/app/financas/despesas/create'"></lib-button>
+<div class="flex flex-col gap-10">
+    <div class="flex justify-center">
+        <lib-button [label]="'Adicionar Despesas'" [routerLink]="'/app/financas/despesas/create'"></lib-button>
+    </div>
+    <div *ngIf="data.length > 0">
+        <lib-table
+        [data]="data"
+        [columns]="columns"
+        [loading]="loading"
+        [showMoreButton]="showMoreButton"
+        (refresh)="refresh()"
+        />
+    </div>
 </div>

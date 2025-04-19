@@ -6,7 +6,6 @@ namespace Core.Enums
         DespesaVariavel,
         DespesaOcasional,
         DespesaEmergencial,
-        DespesaFinanceira,
         Outros
     }
 
@@ -20,7 +19,6 @@ namespace Core.Enums
                 Category.DespesaVariavel => "Despesa Variável",
                 Category.DespesaOcasional => "Despesa Ocasional",
                 Category.DespesaEmergencial => "Despesa Emergencial",
-                Category.DespesaFinanceira => "Despesa Financeira",
                 _ => "Outros",
             };
         }
@@ -33,14 +31,13 @@ namespace Core.Enums
                 "Despesa Variável" => Category.DespesaVariavel,
                 "Despesa Ocasional" => Category.DespesaOcasional,
                 "Despesa Emergencial" => Category.DespesaEmergencial,
-                "Despesa Financeira" => Category.DespesaFinanceira,
                 _ => Category.Outros,
             };
         }
 
         public static Category[] GetValues()
         {
-            return [Category.DespesaFixa, Category.DespesaVariavel, Category.DespesaOcasional, Category.DespesaEmergencial, Category.DespesaFinanceira, Category.Outros];
+            return [Category.DespesaFixa, Category.DespesaVariavel, Category.DespesaOcasional, Category.DespesaEmergencial, Category.Outros];
         }
     }
 }

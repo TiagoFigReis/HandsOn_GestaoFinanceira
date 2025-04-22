@@ -222,7 +222,7 @@ export class TableComponent implements AfterViewInit, OnInit {
 export { Action };
 
 export interface Row {
-  [key: string]: string | number | boolean | Date | Action[];
+  [key: string]: string | number | boolean | Date | Action[] | File ;
 }
 
 export interface Column {
@@ -235,7 +235,8 @@ export interface Column {
     | 'currency'
     | 'number'
     | 'boolean'
-    | 'action';
+    | 'action'
+    | 'custom';
   sortable?: boolean;
   filterable?: boolean;
   visible?: boolean;

@@ -25,28 +25,34 @@ export class ReceitaListComponentFacade {
 
   load() {
     this.loadingSubject.next(true);
-
+  
     this.receitaFacade
-        .getAll()
-        .pipe(
-        tap(
-          (receitas) => {
-            this.receitasSubject.next(
-                receitas.map((receitas) => this.mapReceitaToRow(receitas)),
-            );
-            this.loadingSubject.next(false);
-          },
-          () => {
-            this.loadingSubject.next(false);
-          },
-        ),
+      .getAll()
+      .pipe(
+        tap(async (receitas) => {
+          const rows: Row[] = [];
+  
+          for (const receita of receitas) {
+            let exists = false
+            if(receita.comprovante){
+              exists = true
+            }
+            rows.push(this.mapReceitaToRow(receita, exists));
+          }
+  
+          this.receitasSubject.next(rows);
+          this.loadingSubject.next(false);
+        }, () => {
+          this.loadingSubject.next(false);
+        })
       )
       .subscribe();
   }
 
-  private mapReceitaToRow(receita: Receita): Row {
+  private mapReceitaToRow(receita: Receita, exists: boolean): Row {
     return {
       ...receita,
+      exists,
       actions: [
         {
           tooltip: 'Editar',

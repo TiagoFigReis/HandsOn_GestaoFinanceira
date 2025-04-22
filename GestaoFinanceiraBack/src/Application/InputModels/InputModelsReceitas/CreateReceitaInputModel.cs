@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Core.Entities;
 using Core.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.InputModels.InputModelsReceitas
 {
@@ -21,6 +22,8 @@ namespace Application.InputModels.InputModelsReceitas
         [MaxLength(50, ErrorMessage = "Descrição não pode exceder 50 caracteres")]
         [MinLength(1, ErrorMessage = "Fonte de renda deve ter pelo menos 1 caracter")]
         public string Descricao { get; set; } = string.Empty;
+
+        public IFormFile? Comprovante { get; set;}
 
         public class DataValida : ValidationAttribute
         {

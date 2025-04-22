@@ -10,6 +10,7 @@ namespace Application.ViewModels
         public decimal Valor { get; set; }
         public string? Descricao {get; set;}
         public DateTime Data {get; set;}
+        public string? Comprovante {get; set;}
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public Guid UserId {get; set;}
@@ -23,6 +24,7 @@ namespace Application.ViewModels
                 Valor = receita.Valor,
                 Descricao = receita.Descricao,
                 Data = receita.Data,
+                Comprovante = receita.ComprovanteUrl,
                 CreatedAt = receita.CreatedAt,
                 UpdatedAt = receita.UpdatedAt,
                 UserId = receita.UserId

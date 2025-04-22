@@ -3,6 +3,8 @@ using Microsoft.OpenApi.Models;
 using API.Filters;
 using Application;
 using Infrastructure;
+using Microsoft.Extensions.FileProviders;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +110,14 @@ app.UseCors();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, "Infrastructure", "Comprovantes")
+    ),
+    RequestPath = "/files"
+});
 
 app.MapControllers();
 

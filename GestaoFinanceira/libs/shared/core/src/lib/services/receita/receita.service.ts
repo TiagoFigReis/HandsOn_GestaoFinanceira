@@ -27,20 +27,46 @@ export class ReceitaService extends RequestService {
   }
 
   create(receita: Receita) {
-      return this.httpClient
-        .post<Receita>(`${this.receitaApiUrl}`, JSON.stringify(receita), this.httpOptions)
-        .pipe(catchError(this.handleError));
+    const formData = new FormData();
+  
+    formData.append('valor', receita.valor.toString());
+    formData.append('descricao', receita.descricao);
+    formData.append('data', receita.data);
+  
+    // Se fonte existir, converte pra string
+    if (receita.fonte !== undefined && receita.fonte !== null) {
+      formData.append('fonte', receita.fonte.toString());
     }
   
-  update(receita: Receita) {
-      return this.httpClient
-        .put<Receita>(
-          `${this.receitaApiUrl}/${receita.id}`,
-          JSON.stringify(receita),
-          this.httpOptions,
-        )
-        .pipe(catchError(this.handleError));
+    // Se o arquivo estiver presente
+    if (receita.comprovante) {
+      formData.append('Comprovante', receita.comprovante);
     }
+  
+    return this.httpClient
+      .post<Receita>(`${this.receitaApiUrl}`, formData)
+      .pipe(catchError(this.handleError));
+  }
+  
+  update(receita: Receita) {
+    const formData = new FormData();
+
+    formData.append('valor', receita.valor.toString());
+    formData.append('descricao', receita.descricao);
+    formData.append('data', receita.data);
+
+    if (receita.fonte !== undefined && receita.fonte !== null) {
+        formData.append('fonte', receita.fonte.toString());
+    }
+
+    if (receita.comprovante) {
+        formData.append('Comprovante', receita.comprovante);
+    }
+
+    return this.httpClient
+        .put<Receita>(`${this.receitaApiUrl}/${receita.id}`, formData)
+        .pipe(catchError(this.handleError));
+}
 
     delete(id: string) {
       return this.httpClient

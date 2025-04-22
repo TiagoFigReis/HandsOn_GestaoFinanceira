@@ -143,22 +143,36 @@
 
       <ng-container *ngFor="let col of columns">
         <td class="table-cell" *ngIf="col.visible && col.showToUser">
-          <ng-container *ngIf="col.type === 'text'; else currencyOrDate">
-            {{ rowData[col.field] }}
+
+          <ng-container *ngIf="col.type === 'custom' && col.field === 'comprovante'; else otherTypes">
+            <ng-container *ngIf="rowData.exists; else semComprovante">
+              <a [href]="rowData.comprovante" target="_blank" download="comprovante.png" class="text-primary">
+                Visualizar
+              </a>
+            </ng-container>
+            <ng-template #semComprovante>
+              <span class="text-muted">Sem comprovante</span>
+            </ng-template>
           </ng-container>
 
-          <ng-template #currencyOrDate>
-            <ng-container *ngIf="col.type === 'currency'; else dateOrDatetime">
-              {{ rowData[col.field] | currency : currencyCode }}
+          <ng-template #otherTypes>
+            <ng-container *ngIf="col.type === 'text'; else currencyOrDate">
+              {{ rowData[col.field] }}
             </ng-container>
 
-            <ng-template #dateOrDatetime>
-              <ng-container *ngIf="col.type === 'date'; else datetime">
-                {{ rowData[col.field] | date : 'dd/MM/yyyy' }}
+            <ng-template #currencyOrDate>
+              <ng-container *ngIf="col.type === 'currency'; else dateOrDatetime">
+                {{ rowData[col.field] | currency: currencyCode }}
               </ng-container>
 
-              <ng-template #datetime>
-                {{ rowData[col.field] | date : 'dd/MM/yyyy HH:mm:ss' }}
+              <ng-template #dateOrDatetime>
+                <ng-container *ngIf="col.type === 'date'; else datetime">
+                  {{ rowData[col.field] | date: 'dd/MM/yyyy' }}
+                </ng-container>
+
+                <ng-template #datetime>
+                  {{ rowData[col.field] | date: 'dd/MM/yyyy HH:mm:ss' }}
+                </ng-template>
               </ng-template>
             </ng-template>
           </ng-template>

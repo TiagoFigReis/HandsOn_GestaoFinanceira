@@ -1,7 +1,11 @@
+using Application.Exceptions;
 using Application.InputModels.InputModelsReceitas;
 using Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
+using System.Security.Claims;
+
 
 namespace API.Controllers
 {
@@ -54,7 +58,7 @@ namespace API.Controllers
         /// <response code="500">Internal Server Error</response>
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateReceitaInputModel inputModel)
+        public async Task<IActionResult> Add([FromForm] CreateReceitaInputModel inputModel)
         {
             var receitas = await _receitaServices.Add(User, inputModel);
             return CreatedAtAction(nameof(GetId), new { id = receitas.Id }, receitas);
@@ -73,7 +77,7 @@ namespace API.Controllers
         /// <response code="500">Internal Server Error</response>
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateReceitaInputModel inputModel)
+        public async Task<IActionResult> Update(Guid id, [FromForm] UpdateReceitaInputModel inputModel)
         {
             var receita = await _receitaServices.Update(User, id, inputModel);
             return Ok(receita);

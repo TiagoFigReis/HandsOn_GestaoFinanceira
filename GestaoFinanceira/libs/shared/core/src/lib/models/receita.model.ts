@@ -4,6 +4,7 @@ export interface Receita {
     descricao: string;
     data: string;
     fonte?: string | number;
+    comprovante?: File | string;
     createdAt?: string;
     updatedAt?: string;
   }

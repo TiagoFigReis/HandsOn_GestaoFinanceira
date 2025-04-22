@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Core.Entities;
 using Core.Enums;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.InputModels.InputModelsReceitas
 {
@@ -17,6 +18,8 @@ namespace Application.InputModels.InputModelsReceitas
 
         [MaxLength(50, ErrorMessage = "Descrição não pode exceder 50 caracteres")]
         public string? Descricao { get; set; } = string.Empty;
+
+        public IFormFile? Comprovante { get; set;}
 
         public class DataValida : ValidationAttribute
         {

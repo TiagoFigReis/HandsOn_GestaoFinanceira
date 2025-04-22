@@ -11,13 +11,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories
 {
-    public class ReceitaRepository : IReceitaRepository
+    public class ReceitaRepository(UsersDbContext context) : IReceitaRepository
     {
-        private readonly UsersDbContext _context;
-
-        public ReceitaRepository(UsersDbContext context){
-            _context = context;
-        }
+        private readonly UsersDbContext _context = context;
 
         public async Task<Receitas?> GetByIdAsync(Guid Id, Guid UserId){
             return await _context.Receitas.FirstOrDefaultAsync(r => r.UserId == UserId && r.Id == Id);

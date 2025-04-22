@@ -15,6 +15,7 @@ import {
 } from '@angular/forms';
 import { ButtonComponent } from '../../components/button/button.component';
 import { InputComponent } from '../../components/input/input.component';
+import { UploadFileComponent } from '../../components/uploadFile/uploadFile.component';
 import {
   SelectComponent,
   SelectOption,
@@ -31,6 +32,7 @@ import { InputNumberComponent } from '../../components/input-number/input-number
     FormsModule,
     ReactiveFormsModule,
     InputComponent,
+    UploadFileComponent,
     InputNumberComponent,
     ButtonComponent,
     SelectComponent,
@@ -81,6 +83,9 @@ export class ReceitaFormComponent implements OnChanges {
           Validators.required
         ],
         updateOn: 'blur'
+      }),
+      file: new FormControl('', {
+        updateOn: 'blur'
       })
     })
   }
@@ -108,6 +113,10 @@ export class ReceitaFormComponent implements OnChanges {
     return this.receitaForm.get('data') as FormControl;
   }
 
+  get file(): FormControl{
+    return this.receitaForm.get('file') as FormControl
+  }
+
   updateReceitaData(): void {
     if (!this.receita) return;
     
@@ -123,6 +132,7 @@ export class ReceitaFormComponent implements OnChanges {
       descricao: this.receita.descricao,
       data: this.receita.data.split('T')[0],
       fonte: fonte,
+      file: this.receita.comprovante
     });
   }
 
@@ -139,8 +149,12 @@ export class ReceitaFormComponent implements OnChanges {
       };
   
       const fonte = this.fonte.value;
+
+      const file = this.file
   
       if (fonte && fonte.label) receita.fonte = fonte.label
+
+      if(file && file.value) receita.comprovante = file.value
   
       this.receitaSubmit.emit(receita);
     }

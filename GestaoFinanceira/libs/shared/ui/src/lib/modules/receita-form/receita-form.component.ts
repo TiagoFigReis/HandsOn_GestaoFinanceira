@@ -165,5 +165,6 @@ export interface ReceitaForm {
   valor: number;
   descricao: string;
   data: string;
+  comprovante?: File | string
   role?: string;
 }

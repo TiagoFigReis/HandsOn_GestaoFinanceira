@@ -23,6 +23,7 @@ import {
   Despesa,
 } from '@farm/core';
 import { InputNumberComponent } from '../../components/input-number/input-number.component';
+import { UploadFileComponent } from '../../components/uploadFile/uploadFile.component';
 
 @Component({
   selector: 'lib-despesa-form',
@@ -31,6 +32,7 @@ import { InputNumberComponent } from '../../components/input-number/input-number
     FormsModule,
     ReactiveFormsModule,
     InputComponent,
+    UploadFileComponent,
     InputNumberComponent,
     ButtonComponent,
     SelectComponent,
@@ -81,6 +83,9 @@ export class DespesaFormComponent implements OnChanges {
           Validators.required
         ],
         updateOn: 'blur'
+      }),
+      file: new FormControl('', {
+        updateOn: 'blur'
       })
     })
   }
@@ -108,6 +113,10 @@ export class DespesaFormComponent implements OnChanges {
     return this.despesaForm.get('data') as FormControl;
   }
 
+  get file(): FormControl{
+    return this.despesaForm.get('file') as FormControl
+  }
+
   updateDespesaData(): void {
     if (!this.despesa) return;
     
@@ -123,6 +132,7 @@ export class DespesaFormComponent implements OnChanges {
       descricao: this.despesa.descricao,
       data: this.despesa.data.split('T')[0],
       categoria: categoria,
+      file: this.despesa.comprovante
     });
   }
 
@@ -139,8 +149,12 @@ export class DespesaFormComponent implements OnChanges {
       };
   
       const categoria = this.categoria.value;
+
+      const file = this.file
   
       if (categoria && categoria.label) despesa.categoria = categoria.label
+
+      if(file && file.value) despesa.comprovante = file.value
   
       this.despesaSubmit.emit(despesa);
     }
@@ -151,5 +165,6 @@ export interface DespesaForm {
   valor: number;
   descricao: string;
   data: string;
+  comprovante?: File | string
   role?: string;
 }

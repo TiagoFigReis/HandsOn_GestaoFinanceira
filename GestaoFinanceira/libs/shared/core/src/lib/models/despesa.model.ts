@@ -4,6 +4,7 @@ export interface Despesa {
     valor: number;
     descricao: string;
     data: string;
+    comprovante?: File | string;
     createdAt?: string;
     updatedAt?: string;
   }

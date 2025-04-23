@@ -27,19 +27,45 @@ export class DespesaService extends RequestService {
   }
 
   create(despesa: Despesa) {
+      const formData = new FormData();
+    
+      formData.append('valor', despesa.valor.toString());
+      formData.append('descricao', despesa.descricao);
+      formData.append('data', despesa.data);
+    
+      
+      if (despesa.categoria !== undefined && despesa.categoria !== null) {
+        formData.append('categoria', despesa.categoria.toString());
+      }
+    
+      
+      if (despesa.comprovante) {
+        formData.append('Comprovante', despesa.comprovante);
+      }
+    
       return this.httpClient
-        .post<Despesa>(`${this.despesaApiUrl}`, JSON.stringify(despesa), this.httpOptions)
+        .post<Despesa>(`${this.despesaApiUrl}`, formData)
         .pipe(catchError(this.handleError));
     }
   
-  update(despesa: Despesa) {
+   update(despesa: Despesa) {
+      const formData = new FormData();
+  
+      formData.append('valor', despesa.valor.toString());
+      formData.append('descricao', despesa.descricao);
+      formData.append('data', despesa.data);
+  
+      if (despesa.categoria !== undefined && despesa.categoria !== null) {
+          formData.append('categoria', despesa.categoria.toString());
+      }
+  
+      if (despesa.comprovante) {
+          formData.append('Comprovante', despesa.comprovante);
+      }
+  
       return this.httpClient
-        .put<Despesa>(
-          `${this.despesaApiUrl}/${despesa.id}`,
-          JSON.stringify(despesa),
-          this.httpOptions,
-        )
-        .pipe(catchError(this.handleError));
+          .put<Despesa>(`${this.despesaApiUrl}/${despesa.id}`, formData)
+          .pipe(catchError(this.handleError));
     }
 
     delete(id: string) {

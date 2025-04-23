@@ -25,28 +25,34 @@ export class DespesaListComponentFacade {
 
   load() {
     this.loadingSubject.next(true);
-
+  
     this.despesaFacade
-        .getAll()
-        .pipe(
-        tap(
-          (despesas) => {
-            this.despesasSubject.next(
-                despesas.map((despesas) => this.mapReceitaToRow(despesas)),
-            );
-            this.loadingSubject.next(false);
-          },
-          () => {
-            this.loadingSubject.next(false);
-          },
-        ),
+      .getAll()
+      .pipe(
+        tap(async (despesas) => {
+          const rows: Row[] = [];
+  
+          for (const despesa of despesas) {
+            let exists = false
+            if(despesa.comprovante){
+              exists = true
+            }
+            rows.push(this.mapReceitaToRow(despesa, exists));
+          }
+  
+          this.despesasSubject.next(rows);
+          this.loadingSubject.next(false);
+        }, () => {
+          this.loadingSubject.next(false);
+        })
       )
       .subscribe();
   }
 
-  private mapReceitaToRow(despesa: Despesa): Row {
+  private mapReceitaToRow(despesa: Despesa, exists: boolean): Row {
     return {
       ...despesa,
+      exists,
       actions: [
         {
           tooltip: 'Editar',

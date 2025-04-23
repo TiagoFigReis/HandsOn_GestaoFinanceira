@@ -11,18 +11,20 @@ namespace Core.Entities
         public string? Descricao {get; set;}
 
         public DateTime Data {get; set;}
+        public string ComprovanteUrl {get; set;} = string.Empty;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public Guid UserId {get; set;}
 
         public Despesas() { }
 
-        public Despesas(Category categoria, decimal valor, string descricao, DateTime data, Guid userId)
+        public Despesas(Category categoria, decimal valor, string descricao, DateTime data, string comprovanteUrl, Guid userId)
         {
             Categoria = categoria;
             Valor = valor;
             Descricao = descricao;
             Data = data;
+            ComprovanteUrl = comprovanteUrl;
             UserId = userId;
             CreatedAt = DateTime.Now;
         }
@@ -32,6 +34,7 @@ namespace Core.Entities
             decimal? valor = null,
             string? descricao = null,
             DateTime? data = null,
+            string? comprovanteUrl = null,
             Guid? userId = null
         )
         {
@@ -39,6 +42,7 @@ namespace Core.Entities
             Valor = valor ?? Valor;
             Descricao = descricao ?? Descricao;
             Data = data ?? Data;
+            ComprovanteUrl = comprovanteUrl ?? ComprovanteUrl;
             UserId = userId ?? UserId;
             UpdatedAt = DateTime.Now;
         }

@@ -93,4 +93,13 @@ const columns: Column[] = [
     visible: true,
     showToUser: true,
   },
+  {
+    field: 'comprovante',
+    header: 'Comprovante',
+    type: 'custom',
+    sortable: true,
+    filterable: true,
+    visible: true,
+    showToUser: true,
+  },
 ]

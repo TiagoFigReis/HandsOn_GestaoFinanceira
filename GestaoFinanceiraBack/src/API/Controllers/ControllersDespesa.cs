@@ -22,8 +22,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var receitas = await _despesaServices.GetAllAsync(User);
-            return Ok(receitas);
+            var despesas = await _despesaServices.GetAllAsync(User);
+            return Ok(despesas);
         }
 
         /// <summary>
@@ -39,8 +39,8 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetId(Guid id)
         {
-            var receitas = await _despesaServices.GetByIdAsync(id, User);
-            return Ok(receitas);
+            var despesa = await _despesaServices.GetByIdAsync(id, User);
+            return Ok(despesa);
         }
 
         /// <summary>
@@ -54,10 +54,10 @@ namespace API.Controllers
         /// <response code="500">Internal Server Error</response>
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateDespesaInputModel inputModel)
+        public async Task<IActionResult> Add([FromForm] CreateDespesaInputModel inputModel)
         {
-            var receitas = await _despesaServices.Add(User, inputModel);
-            return CreatedAtAction(nameof(GetId), new { id = receitas.Id }, receitas);
+            var despesa = await _despesaServices.Add(User, inputModel);
+            return CreatedAtAction(nameof(GetId), new { id = despesa.Id }, despesa);
         }
 
         /// <summary>
@@ -73,10 +73,10 @@ namespace API.Controllers
         /// <response code="500">Internal Server Error</response>
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateDespesaInputModel inputModel)
+        public async Task<IActionResult> Update(Guid id, [FromForm] UpdateDespesaInputModel inputModel)
         {
-            var receita = await _despesaServices.Update(User, id, inputModel);
-            return Ok(receita);
+            var despesa = await _despesaServices.Update(User, id, inputModel);
+            return Ok(despesa);
         }
 
         /// <summary>

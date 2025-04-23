@@ -10,6 +10,7 @@ namespace Application.ViewModels
         public decimal Valor { get; set; }
         public string? Descricao {get; set;}
         public DateTime Data {get; set;}
+        public string? Comprovante {get; set;}
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public Guid UserId {get; set;}
@@ -23,6 +24,7 @@ namespace Application.ViewModels
                 Valor = despesa.Valor,
                 Descricao = despesa.Descricao,
                 Data = despesa.Data,
+                Comprovante = despesa.ComprovanteUrl,
                 CreatedAt = despesa.CreatedAt,
                 UpdatedAt = despesa.UpdatedAt,
                 UserId = despesa.UserId

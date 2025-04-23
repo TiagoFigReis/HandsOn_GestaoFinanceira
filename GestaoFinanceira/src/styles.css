@@ -112,4 +112,8 @@
   .table-cell {
     @apply text-sm font-medium text-gray-600 dark:text-gray-300 py-3 px-4 border-b border-gray-100 dark:border-[#1d1c1f] border-t-0 secondary-background group-hover:primary-background transition-colors duration-300;
   }
+
+ .file-upload-basic .filelabel {
+  @apply hidden
+}
 }

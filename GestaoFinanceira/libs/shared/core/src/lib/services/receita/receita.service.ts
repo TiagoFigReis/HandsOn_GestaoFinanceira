@@ -66,7 +66,7 @@ export class ReceitaService extends RequestService {
     return this.httpClient
         .put<Receita>(`${this.receitaApiUrl}/${receita.id}`, formData)
         .pipe(catchError(this.handleError));
-}
+  }
 
     delete(id: string) {
       return this.httpClient

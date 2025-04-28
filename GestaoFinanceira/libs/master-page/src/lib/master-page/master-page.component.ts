@@ -65,6 +65,11 @@ export class MasterPageComponent implements OnInit, OnDestroy {
           icon: 'pi pi-fw pi-users',
           routerLink: '/app/financas/despesas',
         },
+        {
+          label: 'Relatórios',
+          icon: 'pi pi-fw pi-users',
+          routerLink: '/app/financas/relatorios',
+        },
       ],
     });
 

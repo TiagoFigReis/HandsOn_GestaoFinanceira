@@ -45,6 +45,9 @@
       "@farm/receitas": [
         "libs/feature/financas/src/lib/financas/receitas/src/index.ts"
       ],
+      "@farm/relatorios": [
+        "libs/feature/financas/src/lib/financas/relatorios/src/index.ts"
+      ],
       "@farm/security": [
         "libs/feature/settings/src/lib/settings/security/src/index.ts"
       ],

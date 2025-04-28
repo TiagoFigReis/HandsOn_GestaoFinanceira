@@ -1,0 +1,38 @@
+<div class="text-center flex flex-col gap-2">
+    <div>
+        <p class="py-4">Receitas (R$) x Despesas (R$)</p>
+        <lib-chart
+        [labels] = "labelBar"
+        [datasets] = "datasetBar"
+        [loading] = "Receitaloading && Despesaloading"
+        Scale="logarithmic"
+        [responsive]="true"
+        >
+        </lib-chart>
+    </div>
+    
+    <div>
+        <p class="py-4">Receitas (R$) x Fonte</p>
+        <lib-chart
+        type="pie"
+        [labels] = "labelPieFonte"
+        [datasets] = "dataSetPieReceita"
+        [loading] = "Receitaloading"
+        [responsive]="true"
+        >
+        </lib-chart>
+    </div>
+
+    <div>
+        <p class="py-4">Despesas (R$) x Categoria</p>
+        <lib-chart
+        type="pie"
+        [labels] = "labelPieCategoria"
+        [datasets] = "dataSetPieDespesa"
+        [loading] = "Despesaloading"
+        [responsive]="true"
+        >
+        </lib-chart>
+    </div>
+   
+</div>

@@ -32,6 +32,10 @@ export const FinancasRoutes: Route[] = [
         path: 'despesas/:id',
         loadChildren: () => import('@farm/despesas').then((m) => m.DespesasRoutes),
       },
+      {
+        path: 'relatorios',
+        loadChildren: () => import('@farm/relatorios').then((m) => m.RelatoriosRoutes),
+      },
     ],
   },
 ];

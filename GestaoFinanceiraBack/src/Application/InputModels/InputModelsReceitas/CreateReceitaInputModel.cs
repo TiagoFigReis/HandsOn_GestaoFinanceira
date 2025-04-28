@@ -9,7 +9,7 @@ namespace Application.InputModels.InputModelsReceitas
     {
         [Required(ErrorMessage = "É necessário que a receita tenha um valor")]
         [Range(0.01, double.MaxValue, ErrorMessage = "O valor deve ser maior que zero.")]
-        public decimal Valor { get; set; }
+        public string Valor { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "É necessario uma fonte de renda")]
         public string Fonte { get; set; } = string.Empty;

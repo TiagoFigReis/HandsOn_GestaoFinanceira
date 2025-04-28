@@ -11,6 +11,7 @@ using Infrastructure.Utils;
 using Microsoft.AspNetCore.Identity;
 using System.Web;
 using Microsoft.AspNetCore.Http;
+using System.Globalization;
 
 namespace Application.Services
 {
@@ -40,7 +41,7 @@ namespace Application.Services
 
             var despesa = new Despesas {
                 Categoria = CategoryExtension.ToCategory(inputModel.Categoria),
-                Valor = inputModel.Valor,
+                Valor = decimal.Parse(inputModel.Valor.Replace(".",","), new CultureInfo("pt-BR")),
                 Descricao = inputModel.Descricao,
                 Data = inputModel.Data,
                 UserId = userId
@@ -80,7 +81,7 @@ namespace Application.Services
 
             despesa.Update(
                 inputModel.Categoria,
-                inputModel.Valor,
+                decimal.Parse(inputModel.Valor.Replace(".",","), new CultureInfo("pt-BR")),
                 inputModel.Descricao,
                 inputModel.Data,
                 path,

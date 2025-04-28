@@ -11,6 +11,7 @@ using Infrastructure.Utils;
 using Microsoft.AspNetCore.Identity;
 using System.Web;
 using Microsoft.AspNetCore.Http;
+using System.Globalization;
 
 
 namespace Application.Services
@@ -39,7 +40,7 @@ namespace Application.Services
 
             var receita = new Receitas {
                 Fonte = SourceExtension.ToSource(inputModel.Fonte),
-                Valor = inputModel.Valor,
+                Valor = decimal.Parse(inputModel.Valor.Replace(".",","), new CultureInfo("pt-BR")),
                 Descricao = inputModel.Descricao,
                 Data = inputModel.Data,
                 UserId = userId
@@ -76,9 +77,11 @@ namespace Application.Services
                await FileService.DeleteFileAsync(receita.Id);
             }
 
+            Console.WriteLine(decimal.Parse(inputModel.Valor.Replace(".",","), new CultureInfo("pt-BR")));
+
             receita.Update(
                 inputModel.Fonte,
-                inputModel.Valor,
+                decimal.Parse(inputModel.Valor.Replace(".",","), new CultureInfo("pt-BR")),
                 inputModel.Descricao,
                 inputModel.Data,
                 path,

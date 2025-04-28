@@ -1,7 +1,7 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FileUploadModule, FileUploadHandlerEvent } from 'primeng/fileupload';
-import { ControlValueAccessor, FormControl, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
@@ -38,7 +38,6 @@ export class UploadFileComponent implements ControlValueAccessor{
     if(value){
       this.loadImageAsFile(value, "Comprovante")
     }
-    
   }
 
   registerOnChange(fn: any): void {

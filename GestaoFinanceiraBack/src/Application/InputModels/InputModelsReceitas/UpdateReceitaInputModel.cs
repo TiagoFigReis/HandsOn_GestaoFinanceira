@@ -8,7 +8,7 @@ namespace Application.InputModels.InputModelsReceitas
     public class UpdateReceitaInputModel
     {
         [Range(0.01, double.MaxValue, ErrorMessage = "O valor deve ser maior que zero.")]
-        public decimal? Valor { get; set; }
+        public string Valor { get; set; } = string.Empty;
 
         [MaxLength(50, ErrorMessage = "Fonte de renda não pode exceder 50 caracteres")]
         public string Fonte { get; set; } = string.Empty;
